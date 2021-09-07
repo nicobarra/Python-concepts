@@ -17,7 +17,8 @@ And after that,  run the main.py file:
 
 ### And It will returns the following:
 
-![main](https://user-images.githubusercontent.com/71539596/132390590-75b339ce-49ec-42cc-8efc-1d0f7320f434.png)
+![main_2](https://user-images.githubusercontent.com/71539596/132392367-132fc352-c664-4207-994c-b0b057fd3599.png)
+
 
 #### Also, you can modify the parameters set in the run() function off the main.py file.
 
