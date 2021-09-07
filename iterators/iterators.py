@@ -23,8 +23,3 @@ class FiboIter:
                 return self.aux
         else:
             raise StopIteration
-
-if __name__ == "__main__":
-    fibonacci = FiboIter(6)
-    for element in fibonacci:
-        print(element)
