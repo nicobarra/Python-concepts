@@ -15,7 +15,7 @@ And after that,  run the main.py file:
 
 `python3 main.py`
 
-### And It will returns the following:
+### And It will return the following:
 
 ![main-3](https://user-images.githubusercontent.com/71539596/132921345-de1b9f06-7056-44a1-af74-ef821d1f8af0.png)
 
