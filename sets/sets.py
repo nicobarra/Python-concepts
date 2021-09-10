@@ -7,3 +7,4 @@ def remove_duplicates_with_for(list):
 
 def set_remove_duplicates(list):
     return set(list)
+
