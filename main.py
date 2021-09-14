@@ -1,94 +1,124 @@
 from closures.closure import make_divison_by
-from decorators.decorator import upper_text, execution_time
-from iterators.iterators import FiboIter, FiboNumber
-from generatorss.generator import fibo_gen_counter_limit, fibonacci_gen
-from sets.sets import remove_duplicates_with_for, set_remove_duplicates
+from decorators.decorator import upper_text, lower_text, execution_time
+from iterators.iterators import FibonacciIterator
+from generatorss.generator import FibonacciGenerator
 
-def divisor(): ## Closure
-    divisor = 5
-    division_by = make_divison_by(divisor)
-    numerator = 100
-    return f"The result of diving {numerator} by {divisor} is:  {division_by(numerator)}"
+def division(numerator, denominator): ## Closure
+    division_by = make_divison_by(denominator)
+    return f"The result of diving {numerator} by {denominator} is:  {division_by(numerator)}"
 
-def transform_text(): ## Decorator
-    new_text = upper_text("before applying the decorator on the function, this text was lower.")
-    return new_text
-class FibonacciIterator:
+def transform_text(text, transform_option): ## Decorator
+    assert type(text) == str, "You only can only enter string"
+    assert type(transform_option) == int, "You only can only enter a number"
+    assert transform_option == 1 or transform_option == 2, "The number must be one of the option: 1 or 2"
+    if transform_option == 1:
+        return lower_text(text)
+    elif transform_option == 2:
+        return upper_text(text)
 
-    def fibonacci_iterator_limit(): 
-        fibonacci = FiboIter(6)
-        print("Fibonacci iterator: \n*  n°: fibonacci number")
-        iterator_counter = 0
-        for element in fibonacci:
-            print(f"*   {iterator_counter}: {element}")
-            iterator_counter += 1
-
-    def fibonacci_number_limit(): 
-        fibonacci_number = 21
-        fibonacci_number_limit = FiboNumber(21)
+def fibonacci_iterator(option): ## Iterator
+    assert type(option) == int, "You can only insert a number for choosing the option"
+    assert option == 1 or option == 2 or option == 3, "You can only insert a number of the mentioned options"
+    
+    if option == 1:
+        iteration_limit = int(input("Set the iteration time limit: ")) 
+        assert type(iteration_limit) == int, "You only can set an integer as the limit"
         print("Limit method by Fibonacci number: \n*   n°: fibonacci number")
-        time_of_iteration = 0
-        for element in fibonacci_number_limit:
-            print(f"*    {time_of_iteration}: {element}")
-            time_of_iteration += 1
-        
+        FibonacciIterator.fibonacci_iterator_limit(iteration_limit)
 
-class FibonacciGenerator:
-
-    def fibonacci_number_limit(): 
-        fibonacci_number = 21
-        fibonacci_number_limit = fibonacci_gen(fibonacci_number)
+    elif option == 2:
+        number_limit = int(input("Set the Fibonacci number limit: ")) 
+        assert type(number_limit) == int, "You only can set an integer as the limit"
         print("Limit method by Fibonacci number: \n*   n°: fibonacci number")
-        time_of_iteration = 0
-        for element in fibonacci_number_limit:
-            print(f"*    {time_of_iteration}: {element}")
-            time_of_iteration += 1
+        FibonacciIterator.fibonacci_number_limit(number_limit)
 
-    def fibonacci_iterator_limit():
-        iteration = 8
-        fibonacci_counter_limit = fibo_gen_counter_limit(iteration)
-        iteration_time = 0
-        for element in fibonacci_counter_limit:
-            print(f"*    {iteration_time}: {element}")
-            iteration_time += 1
+    elif option == 3:
+        iteration_limit = int(input("Set the iteration limit: ")) 
+        assert type(iteration_limit) == int, "You only can set an integer as the limit"
+        print("Limit method by Fibonacci number: \n*   n°: fibonacci number")
+        FibonacciIterator.fibonacci_iterator_limit(iteration_limit)
+        number_limit = int(input("Set the Fibonacci number limit: ")) 
+        assert type(number_limit) == int, "You only can set an integer as the limit"
+        print("Limit method by Fibonacci number: \n*   n°: fibonacci number")
+        FibonacciIterator.fibonacci_number_limit(number_limit)
 
-def unique_element():
-    # Function for removing duplicates with a list, a for loop and an if:
-    clean_list = remove_duplicates_with_for([1, 2, 2, 3, 3, 4, 5, 6, 6])
-    print(f"Unique list created with a for loop: {clean_list}")
+def fibonacci_generator(option): ## Generator
+    assert type(option) == int, "You can only insert a number for choosing the option"
+    assert option == 1 or option == 2 or option == 3, "You can only insert a number of the mentioned options"
+    
+    if option == 1:
+        iteration_limit = int(input("Set the iteration time limit: ")) 
+        assert type(iteration_limit) == int, "You only can set an integer as the limit"
+        print("Limit method by Fibonacci number: \n*   n°: fibonacci number")
+        FibonacciGenerator.fibonacci_iteration_limit(iteration_limit)
 
-def set_unique_element():
-    # Function for removing duplicates by only using set():
-    set_list = set_remove_duplicates([1, 1, 2, 3, 3, 4, 5, 5, 6, 6])
-    print(f"Unique list created with a set(): {set_list} --> (Is more efficient)")
+    elif option == 2:
+        number_limit = int(input("Set the Fibonacci number limit: ")) 
+        assert type(number_limit) == int, "You only can set an integer as the limit"
+        print("Limit method by Fibonacci number: \n*   n°: fibonacci number")
+        FibonacciGenerator.fibonacci_number_limit(number_limit)
+
+    elif option == 3:
+        iteration_limit = int(input("Set the iteration limit: ")) 
+        assert type(iteration_limit) == int, "You only can set an integer as the limit"
+        print("Limit method by Fibonacci number: \n*   n°: fibonacci number")
+        FibonacciGenerator.fibonacci_iteration_limit(iteration_limit)
+        number_limit = int(input("Set the Fibonacci number limit: ")) 
+        assert type(number_limit) == int, "You only can set an integer as the limit"
+        print("Limit method by Fibonacci number: \n*   n°: fibonacci number")
+        FibonacciGenerator.fibonacci_number_limit(number_limit)
+
+def set_unique_element(elements_text): ## Set
+    elements_text = elements_text.replace(",","")
+    list = elements_text.split(" ")
+    set_list = set(list) # Function for removing duplicates by only using set():
+    return f"Unique list created with a set(): {set_list} --> (set() is efficient)"
+
 
 @execution_time # Returns how much times it takes to run() to execute
 def run():
     ## Closure:
-    print("-- "*19 +"\n# CLOSURES FUNCTION:")
-    print(divisor())
+    print("-- "*19 +"\n# CLOSURES: \n This is a division function")
+    numerator = float(input("Set the numerator you want: "))
+    denominator = float(input("Set the denominator you want: "))
+    print(division(numerator, denominator))
 
     ## Decorator:
     print("-- "*19 +"\n# DECORATORS FUNCTION:")
-    print(transform_text())
+    text = input("Write the text that the function will transform: \n")
+    transform_option = int(input("Choose how you want to transform the previous text:\
+        \n 1. Lower text \
+        \n 2. Upper text \
+    \n Enter the number of the option you want: "))
+    print(transform_text(text, transform_option))
 
-    ## Iterators: In this case Fibonacci with iteration limit
+    ## Iterators: 
     print("-- "*19 +"\n# ITERATORS FUNCTION")
-    FibonacciIterator.fibonacci_iterator_limit()
+    print("The Fibonacci function created with an iterator")
+    option_fibonacci_iterator = int(input("Choose the option you want in order to set the limit of the Fibonacci iterator function: \n \
+        1. Set the limit by the time of the iteration \n \
+        2. Set the limit by the number of fibonacci \n \
+        3. I want to try both options \n \
+Enter the number of the option you want: "))
+    fibonacci_iterator(option_fibonacci_iterator)     
 
-    ## Generators: Sugar syntax iterators. In this case of FiboIter
+    ## Generators: (Sugar syntax iterators.)
     print("-- "*19 +"\n# GENERATORS FUNCTION:")
-    # Fibonacci with a fibonacci number as a limit:
-    FibonacciGenerator.fibonacci_number_limit()
-    print("* "*19)
-    # Fibonacci with an iteration of the fibonacci series as a limit:
-    print("Limit method by Fibonacci iteration: \n*   n°: fibonacci number")
-    FibonacciGenerator.fibonacci_iterator_limit()
+    print("The same Fibonacci function, but in this case created with a generator")
+    option_fibonacci_generator = int(input("Choose the option you want in order to set the limit of the Fibonacci generator function: \n \
+        1. Set the limit by the time of the iteration \n \
+        2. Set the limit by the number of fibonacci \n \
+        3. I want to try both options \n \
+Enter the number of the option you want: "))
+    fibonacci_generator(option_fibonacci_generator)  
 
     ## Sets
     print("-- "*25 +"\n# SETS FUNCTION:")
-    unique_element()
-    set_unique_element()
+    element_text = input("Enter a text separating with an space each element that you want to be added. \n \
+ The set() function will delete the ',' and will only return only an unique element of this text. \n \
+  For example: 'I am good today, how are you today ?' \n \
+Enter your text with your elements: ")
+    print(set_unique_element(element_text))
 
     ## Decorator '@execution_time' output:
     print("-- "*25 +"\n# OUTPUT FROM THE DECORATOR 'EXECUTION_TIME':")

@@ -15,7 +15,18 @@ def format_upper(func) -> str: # It works as an upper decorator for text
         return f"{func(*args, **kwargs).upper()}"
     return wrapper
 
+def format_lower(func) -> str:
+    def wrapper(*args, **kwargs) -> str:
+        func(*args, **kwargs)
+        return f"{func(*args, **kwargs).lower()}"
+    return wrapper
+
 @format_upper
 def upper_text(text: str) -> str: # It only has an assert and returns the text
+    assert type(text) == str, "It only accepts text"
+    return f"* {text}"
+
+@format_lower
+def lower_text(text: str) -> str: # It only has an assert and returns the text
     assert type(text) == str, "It only accepts text"
     return f"* {text}"

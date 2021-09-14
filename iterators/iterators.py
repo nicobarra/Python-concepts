@@ -23,9 +23,7 @@ class FiboIter:
                 return self.aux
         else:
             raise StopIteration
-
 class FiboNumber:
-
     def __init__(self, max=None):
         self.max = max
 
@@ -36,7 +34,7 @@ class FiboNumber:
         return self
 
     def __next__(self):
-        if self.n1 < self.max:
+        if self.n2 < self.max:
             if self.counter == 0:
                 self.counter += 1
                 return self.n1
@@ -49,3 +47,17 @@ class FiboNumber:
                 return self.n1
         else:
             raise StopIteration
+class FibonacciIterator:
+    def fibonacci_iterator_limit(limit): 
+        fibonacci = FiboIter(limit)
+        iterator_counter = 0
+        for element in fibonacci:
+            print(f"*   {iterator_counter}: {element}")
+            iterator_counter += 1
+
+    def fibonacci_number_limit(limit): 
+        fibonacci_number_limit = FiboNumber(limit)
+        time_of_iteration = 0
+        for element in fibonacci_number_limit:
+            print(f"*    {time_of_iteration}: {element}")
+            time_of_iteration += 1  

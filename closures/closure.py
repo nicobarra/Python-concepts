@@ -1,10 +1,10 @@
 
 def make_divison_by(divisor: int) -> int:
-    assert type(divisor) == int, "Solo se pueden números"
+    assert type(divisor) == int or type(divisor) == float, "Solo se pueden números"
     assert divisor != 0, "You can't divide by zero"
     
     def division(numerator: int) -> int:
-        assert type(numerator) == int, "Solo se pueden números"
+        assert type(numerator) == int or type(numerator) == float, "Solo se pueden números"
         return numerator / divisor
     
     return division
