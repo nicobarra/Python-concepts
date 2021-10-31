@@ -1,4 +1,4 @@
-# Python-advanced
+# Python-concepts
 This is a project of with some really intresting concepts about Python:
 * Closures
 * Decorators
